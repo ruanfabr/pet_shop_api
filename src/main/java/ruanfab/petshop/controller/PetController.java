@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -26,5 +29,17 @@ public class PetController {
     @GetMapping(path= "/pets")
     public ResponseEntity<String> verPet() throws JsonProcessingException {
         return ResponseEntity.ok(objectMapper.writeValueAsString(animals));
+    }
+
+    @PostMapping(path= "/adicionarPet")
+    public ResponseEntity<Void> adicionarPet(@RequestBody String animal) throws JsonProcessingException {
+        animals.add(animal);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping(path= "/removerPet")
+    public ResponseEntity<Void> limparLista() {
+        animals = new ArrayList<>();
+        return ResponseEntity.ok().build();
     }
 }
