@@ -44,7 +44,7 @@ Este é um projeto simples em Java com Spring Boot criado para aprendizado e sim
 }
 ```
 
-### Exemplo de JSON para atualizar um pet (PUT /pets/updtPet/Rex/cahorro):
+### Exemplo de JSON para atualizar um pet (PUT /pets/updtPet/{nome}/{tipo_animal}):
 
 ```json
 {
