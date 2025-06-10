@@ -56,7 +56,7 @@ Este é um projeto simples em Java com Spring Boot criado para aprendizado e sim
 }
 ```
 
-# Como rodar o projeto
+#### Como rodar o projeto
 
     Certifique-se de ter o Java 11+ e Maven instalados.
 
@@ -64,11 +64,11 @@ Este é um projeto simples em Java com Spring Boot criado para aprendizado e sim
 
     No terminal, dentro da pasta do projeto, execute:
 
-# mvn spring-boot:run
+#### mvn spring-boot:run
 
     O serviço estará disponível em http://localhost:8080.
 
-# Observações
+#### Observações
 
     Este projeto não usa banco de dados. Todos os dados são armazenados apenas em memória durante a execução.
 
