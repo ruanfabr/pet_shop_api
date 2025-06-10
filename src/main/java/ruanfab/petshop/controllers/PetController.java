@@ -1,6 +1,7 @@
 package ruanfab.petshop.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -46,5 +47,17 @@ public class PetController {
         else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Animal não encontrado!");
         }
+    }
+
+    @PostMapping("/updtPet/{nome}/{tipo_animal}")
+    public ResponseEntity<String> updtPet(@PathVariable("nome") String nome_alterar, @PathVariable("tipo_animal") String tipo_animal_alterar, 
+    @RequestBody PetModel body){
+        if (petService.updatePet(Optional.ofNullable(body.getNome()), Optional.ofNullable(body.getTipo_animal()), Optional.ofNullable(body.getRaca()), Optional.ofNullable(body.getIdade()), Optional.ofNullable(body.getSexo()), nome_alterar, tipo_animal_alterar).equals("Sucess")){
+            return ResponseEntity.ok("Alterado com Sucesso!");
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Algo deu errado");
+        }
+        
     }
 }

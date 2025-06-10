@@ -2,6 +2,7 @@ package ruanfab.petshop.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,42 @@ public class PetServices {
         petList.add(novoAnimal);
 
         return "Animal adicionado com sucesso";
+    }
+
+    public String updatePet(Optional<String> nome, Optional<String> tipo_animal, Optional<String> raca, Optional <Integer> idade, Optional <Character> sexo, String nome_alterar, String tipo_animal_alterar){
+        
+        try {
+            Optional<PetModel> retorno_pesquisa = petList.stream().filter(animal -> animal.getNome().equals(nome_alterar) && animal.getTipo_animal().equals(tipo_animal_alterar)).findFirst();
+
+            if(retorno_pesquisa.isEmpty()){
+                throw new Exception("Animal não encontrado");
+            }
+
+            if (nome.isPresent()){
+                retorno_pesquisa.ifPresent(animal -> animal.setNome(nome.get()));
+            }
+            
+            if (tipo_animal.isPresent()){
+                retorno_pesquisa.ifPresent(animal -> animal.setTipo_animal(tipo_animal.get()));
+            }
+            
+            if (raca.isPresent()){
+                retorno_pesquisa.ifPresent(animal -> animal.setRaca(raca.get()));
+            }
+            
+            if (idade.isPresent()){
+                int idade_int = idade.get();
+                retorno_pesquisa.ifPresent(animal -> animal.setIdade(idade_int));
+            }
+            
+            if (sexo.isPresent()){
+                retorno_pesquisa.ifPresent(animal -> animal.setSexo(sexo.get()));
+            }
+            return "Sucess";
+        } catch (Exception e) {
+            System.out.print(e);
+            return "Error: " + e;
+        }
     }
 
     public String removePet(String nome){
