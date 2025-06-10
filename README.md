@@ -70,7 +70,7 @@ Este é um projeto simples em Java com Spring Boot criado para aprendizado e sim
 
 ### mvn spring-boot:run
 
-    O serviço estará disponível em http://localhost:8080.
+    O serviço estará disponível em http://localhost:3000.
 
 ### Observações
 
