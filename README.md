@@ -44,8 +44,6 @@ Este é um projeto simples em Java com Spring Boot criado para aprendizado e sim
 }
 ```
 
-### Exemplo de JSON para remover um pet (DELETE /pets/removePet/Rex):
-
 ### Exemplo de JSON para atualizar um pet (PUT /pets/updtPet/Rex/cahorro):
 
 ```json
