@@ -56,6 +56,10 @@ Este é um projeto simples em Java com Spring Boot criado para aprendizado e sim
 }
 ```
 
+-------------------------------------------------------------------------------------
+
+
+
 ### Como rodar o projeto
 
     Certifique-se de ter o Java 11+ e Maven instalados.
