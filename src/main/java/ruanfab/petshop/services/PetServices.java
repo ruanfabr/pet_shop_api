@@ -30,7 +30,7 @@ public class PetServices {
         return "Animal adicionado com sucesso";
     }
 
-    public String updatePet(Optional<String> nome, Optional<String> tipo_animal, Optional<String> raca, Optional <Integer> idade, Optional <Character> sexo, String nome_alterar, String tipo_animal_alterar){
+    public String updatePet(String nome, String tipo_animal, String raca, Integer idade, Character sexo, String nome_alterar, String tipo_animal_alterar){
         
         try {
             Optional<PetModel> retorno_pesquisa = petList.stream().filter(animal -> animal.getNome().equals(nome_alterar) && animal.getTipo_animal().equals(tipo_animal_alterar)).findFirst();
@@ -39,25 +39,25 @@ public class PetServices {
                 throw new Exception("Animal não encontrado");
             }
 
-            if (nome.isPresent()){
-                retorno_pesquisa.ifPresent(animal -> animal.setNome(nome.get()));
+            if (nome != null){
+                retorno_pesquisa.ifPresent(animal -> animal.setNome(nome));
             }
             
-            if (tipo_animal.isPresent()){
-                retorno_pesquisa.ifPresent(animal -> animal.setTipo_animal(tipo_animal.get()));
+            if (tipo_animal != null){
+                retorno_pesquisa.ifPresent(animal -> animal.setTipo_animal(tipo_animal));
             }
             
-            if (raca.isPresent()){
-                retorno_pesquisa.ifPresent(animal -> animal.setRaca(raca.get()));
+            if (raca != null){
+                retorno_pesquisa.ifPresent(animal -> animal.setRaca(raca));
             }
             
-            if (idade.isPresent()){
-                int idade_int = idade.get();
+            if (idade != null){
+                int idade_int = idade;
                 retorno_pesquisa.ifPresent(animal -> animal.setIdade(idade_int));
             }
             
-            if (sexo.isPresent()){
-                retorno_pesquisa.ifPresent(animal -> animal.setSexo(sexo.get()));
+            if (sexo != null){
+                retorno_pesquisa.ifPresent(animal -> animal.setSexo(sexo));
             }
             return "Sucess";
         } catch (Exception e) {

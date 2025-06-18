@@ -52,7 +52,7 @@ public class PetController {
     @PostMapping("/updtPet/{nome}/{tipo_animal}")
     public ResponseEntity<String> updtPet(@PathVariable("nome") String nome_alterar, @PathVariable("tipo_animal") String tipo_animal_alterar, 
     @RequestBody PetModel body){
-        if (petService.updatePet(Optional.ofNullable(body.getNome()), Optional.ofNullable(body.getTipo_animal()), Optional.ofNullable(body.getRaca()), Optional.ofNullable(body.getIdade()), Optional.ofNullable(body.getSexo()), nome_alterar, tipo_animal_alterar).equals("Sucess")){
+        if (petService.updatePet(body.getNome(), body.getTipo_animal(), body.getRaca(), body.getIdade(), body.getSexo(), nome_alterar, tipo_animal_alterar).equals("Sucess")){
             return ResponseEntity.ok("Alterado com Sucesso!");
         }
         else {
